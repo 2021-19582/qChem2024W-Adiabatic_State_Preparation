@@ -2,21 +2,17 @@
 Generating FCIDUMP for the final Hamiltonian of ASP using pyscf.
 
 Author: Seunghoon Lee, Jan 17, 2022
-Edited: Inyoung  Choi, Jan 11, 2024
 """
 
 import numpy as np
 from tools_io import dumpERIs
 from pyscf import gto, scf, dft, ao2mo
-# FCI: Full Config Integral
-# ASP: adiabatic state preparation
 
 #==================================================================
 # Molecule
 #==================================================================
-mol = gto.Mole()                # Mole class: Handle params and attrs for GTO
+mol = gto.Mole()
 mol.verbose = 5
-                                # mol.atom: coords of atoms [Fe2S2(SCH3)4]2-
 mol.atom = '''
  Fe                 5.22000000    1.05000000   -7.95000000
  S                  3.86000000   -0.28000000   -9.06000000
@@ -51,22 +47,16 @@ mol.symmetry = False
 mol.build()
 
 #==================================================================
-# SCF: Self Consistent Field
+# SCF
 #==================================================================
-mf = scf.sfx2c(scf.RKS(mol))    # RKS: (non-rel) restr. Kohn-Sham
-                                # scf.RKS(mol) returns dft.RKS(mol)
-                                # sfx2c: spin-free (the scalar part) 
-                                #       X2C (eXact-2-component) 
-                                #       with 1-electron X-matrix
+mf = scf.sfx2c(scf.RKS(mol))
 mf.chkfile = './output/hs_bp86.chk'
 mf.max_cycle = 500
 mf.conv_tol = 1.e-4
 mf.xc = 'b88,p86' 
 mf.scf()
 
-mf2 = scf.newton(mf)            # scf.RHF returns instance of SCF class
-                                # newton(mf): Co-iterative augmented hessian (CIAH)
-                                #       second order SCF solver
+mf2 = scf.newton(mf)
 mf2.chkfile = './output/hs_bp86.chk'
 mf2.conv_tol = 1.e-12
 mf2.kernel()
@@ -74,46 +64,28 @@ mf2.kernel()
 #==================================================================
 # Dump integrals
 #==================================================================
-mo = mf2.mo_coeff               
+mo = mf2.mo_coeff
 norb = 12 
 nelec = [7, 7]
-
-
-from pyscf import mcscf         # MCSCF: Multi-configuration self-consistent field
-
-
+from pyscf import mcscf
 mc = mcscf.CASCI(mf, norb, nelec)
-                                # CASCI: Complete Active Space config. integral
-                                #       wave ftn is L-comb of Slater-det.s
-                                #       expansion coeff solved in variational procedure
-                                #   Note) fixed oribitals!
-                     
-mc.mo_coeff = mo                # [Fe2S2(SCH3)2]2-
-act_cp_op = [78, 84]            # p-orbitals of S...
+mc.mo_coeff = mo
+act_cp_op = [78, 84]
 act_d = [89, 90, 91, 92, 93, 94, 95, 96, 97, 98]
-                                # d-orbitals of Fe
 act_idx = act_cp_op + act_d
-assert len(act_idx) == norb     # norb: # of orbitals
-mo = mc.sort_mo(act_idx)        # 
+assert len(act_idx) == norb
+mo = mc.sort_mo(act_idx)
 mc.mo_coeff = mo
 #from pyscf import tools
 #tools.molden.from_mo(mol, 'fe2s2_actonly.molden', mo[:,86:98])
 
-h1e, ecore = mc.get_h1eff()     # get_h1eff(): CAS space one-electron hamiltonian
-                                # h1e: effective one-electron hamiltonian 
-                                #       defined in CAS space
-                                # ecore: electronic energy from core
-g2e = mc.get_h2eff()            # get_h2eff(): active space two-particle Hamiltonian
+h1e, ecore = mc.get_h1eff()
+g2e = mc.get_h2eff()
 g2e = ao2mo.restore(1, g2e, norb)
-                                # g2e: converted the 2e intgrl (in Chemist's notation)
-                                #       between different
-                                #       level of permutation symmetry
-header =""" &FCI NORB=12,NELEC=14,MS2=0,
+header =""" &FCI NORB=  12,NELEC=14,MS2=0,
   ORBSYM=1,1,1,1,1,1,1,1,1,1,1,1,
   ISYM=1,
  &END
 """
-dumpERIs('./output/FCIDUMP10000', header, int1e=h1e, int2e=g2e, ecore=ecore)       
-                                # ERI: electron repulsion integral
-                                # Final Hamiltonian
-                                
+dumpERIs('./output/FCIDUMP10000', header, int1e=h1e, int2e=g2e, ecore=ecore)       # Final Hamiltonian
+
