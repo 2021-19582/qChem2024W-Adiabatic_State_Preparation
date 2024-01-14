@@ -45,7 +45,7 @@ mol.atom = '''
 '''
 mol.basis = 'tzp-dkh'
 mol.charge = -2
-mol.spin = 0
+mol.spin = 10 
 mol.build()
 mol.symmetry = False
 mol.build()
