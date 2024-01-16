@@ -23,3 +23,29 @@ bash: no job control in this shell
 :: vtune -- latest
 :: oneAPI environment initialized ::
  
+[main 75850e8] update node6
+ 69 files changed, 293060 insertions(+), 5 deletions(-)
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/00000_hs_bp86_MCSCF_FeSdi_OX_12o_14e.chk (66%)
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/00007_hs_bp86_MCSCF_FeSdi_OX_20o_30e.chk (66%)
+ create mode 100644 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/00008_DMRG.out
+ create mode 100644 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/00008_MCSCF_FeSdi_OX_20o_30e.FCIDUMP
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/00008_hs_bp86_MCSCF_FeSdi_OX_20o_30e.chk (66%)
+ create mode 100644 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/00008_slurmDMRG.out
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/nodex/F.MPS.KET.10 (88%)
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/nodex/F.MPS.KET.11 (95%)
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/nodex/F.MPS.KET.12 (97%)
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/nodex/F.MPS.KET.13 (97%)
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/nodex/F.MPS.KET.14 (100%)
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/nodex/F.MPS.KET.15 (99%)
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/nodex/F.MPS.KET.16 (81%)
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/nodex/F.MPS.KET.3 (88%)
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/nodex/F.MPS.KET.4 (99%)
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/nodex/F.MPS.KET.5 (99%)
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/nodex/F.MPS.KET.6 (99%)
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/nodex/F.MPS.KET.7 (99%)
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/nodex/F.MPS.KET.8 (89%)
+ rewrite 1_FCIDUMP/1_FCIDUMP_final/mySimul/output/nodex/F.MPS.KET.9 (85%)
+ create mode 100644 slurmGitPush4.out
+ create mode 100644 slurmGitPush6.out
+To github.com:2021-19582/qChem2024W-Adiabatic_State_Preparation.git
+   c55f3e3..75850e8  main -> main
