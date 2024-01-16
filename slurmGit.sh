@@ -11,5 +11,5 @@ source ~/.bashrc
 
 export OMP_NUM_THREADS=36
 git add .
-git commit -m "update node2"
+git commit -m "update node8"
 git push
