@@ -24,13 +24,5 @@ bash: no job control in this shell
 :: oneAPI environment initialized ::
  
 /home/amychoi7/programs/anaconda/envs/pyscf
-Unloading jmol-16.1.47
-  ERROR: No such file or directory on
-    '/usr/share/modules/modulefiles/jmol-16.1.47'
 ERROR: Unable to locate a modulefile for 'pyscf'
-Currently Loaded Modulefiles:
- 1) jmol-16.1.47  
-  File "00000_defaultMain.py", line 57
-    mychkfile =  './output/'+myfilestr+'_hs_bp86_MCSCF_'+mymolstr+'_'+myactOE'.chk' # TODO
-                                                                                  ^
-SyntaxError: invalid syntax
+No Modulefiles Currently Loaded.
