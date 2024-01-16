@@ -54,7 +54,7 @@ mycharge = -2 # TODO
 myspin = 10 # TODO
 mysymmetry = False # TODO
 # SCF
-mychkfile =  './output/'+myfilestr+'_hs_bp86_MCSCF_'+mymolstr+'_'+myactOE'.chk' # TODO
+mychkfile =  './output/'+myfilestr+'_hs_bp86_MCSCF_'+mymolstr+'_'+myactOEstr+'.chk' # TODO
 # genMolden
 myNEEDMOLDEN = True # TODO
 myMOLDENfile =  ''+myfilestr+'_'+mymolstr+'_DFT.molden' # TODO
@@ -65,7 +65,7 @@ myheader = """ &FCI NORB=12,NELEC=14,MS2=0,
    ISYM=1,
   &END
  """ # TODO
-myFCIDUMPfile = './output/'myfilestr+'_MCSCF_'mymolstr+'_'+myactOE+'.FCIDUMP' # TODO
+myFCIDUMPfile = './output/'+myfilestr+'_MCSCF_'+mymolstr+'_'+myactOEstr+'.FCIDUMP' # TODO
 #==================================================================
 # Molecule
 #==================================================================

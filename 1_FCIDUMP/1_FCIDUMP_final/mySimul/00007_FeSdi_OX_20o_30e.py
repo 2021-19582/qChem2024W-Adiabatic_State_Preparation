@@ -55,17 +55,17 @@ mycharge = -2
 myspin = 10 
 mysymmetry = False 
 # SCF
-mychkfile =  './output/'+myfilestr+'_hs_bp86_MCSCF_'+mymolstr+'_'+myactOE'.chk' 
+mychkfile =  './output/'+myfilestr+'_hs_bp86_MCSCF_'+mymolstr+'_'+myactOEstr+'.chk' 
 # genMolden
 myNEEDMOLDEN = False
 myMOLDENfile =  ''+myfilestr+'_'+mymolstr+'_DFT.molden' 
 # dumpInt
-myact = [] # TODO
+myact = [] 
 #mySn = [61, 62, 
 mySn = [81, 82, 85, 86]
 
 #mySb = [57, 58, 59, 60
-mySb = [75, 76, 77, 78, 79, 83] # TODO
+mySb = [75, 76, 77, 78, 79, 83] 
 myS = mySn + mySb
 myFe = [87, 88, 91, 92, 93, 94, 95, 96, 97, 98] # 10 electrons
 myact = myS + myFe
@@ -75,7 +75,7 @@ myheader = """ &FCI NORB=20,NELEC=30,MS2=0,
    ISYM=1,
   &END
  """
-myFCIDUMPfile = './output/'myfilestr+'_MCSCF_'mymolstr+'_'+myactOE+'.FCIDUMP'
+myFCIDUMPfile = './output/'+myfilestr+'_MCSCF_'+mymolstr+'_'+myactOEstr+'.FCIDUMP'
 #==================================================================
 # Molecule
 #==================================================================
