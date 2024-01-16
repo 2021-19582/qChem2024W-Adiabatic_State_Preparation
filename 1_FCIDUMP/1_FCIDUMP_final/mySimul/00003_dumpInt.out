@@ -1,0 +1,25 @@
+hi! my name is MO
+[[-2.31327525e-04  2.33626849e-01  6.82637882e-08 ...  1.18983180e-04
+  -1.27602095e+00 -1.22066844e+00]
+ [-5.29976419e-04  5.36281877e-01  1.13324608e-06 ... -7.93977250e-05
+  -1.22599575e+00 -1.17323468e+00]
+ [-2.33113754e-05  1.76308169e-03 -2.57966513e-05 ...  3.65885622e-03
+   1.91368240e-01  1.87730417e-01]
+ ...
+ [-5.13524375e-06 -3.85646104e-07 -5.42759613e-06 ... -2.33330127e-04
+  -5.89492405e-04  5.32776604e-04]
+ [ 2.79065972e-06 -1.06151554e-07  4.18806389e-06 ... -4.20524843e-04
+   2.84482584e-04 -3.21823978e-04]
+ [-8.19123025e-06  5.29402384e-07 -7.03789197e-06 ...  6.73333098e-04
+  -8.13446027e-04  9.71757291e-04]]
+    CPU time for init_direct_scf      1.71 sec, wall time      0.05 sec
+    CPU time for vj and vk    337.62 sec, wall time      9.39 sec
+MO integrals int2e_sph are saved in <HDF5 file "tmpygm64ynb" (mode r+)>/eri_mo
+num. MO ints = 44100, required disk 0.3528 MB
+step1: tmpfile /tmp/tmpw6fpd13s  368.68104 MB
+step1: (ij,kl) = (210,219453), mem cache 4000 MB, iobuf 800 MB
+    CPU time for Initializing ao2mo.outcore.half_e1      4.11 sec, wall time      0.13 sec
+    CPU time for AO->MO transformation for int2e_sph 1 pass   2240.73 sec, wall time     62.47 sec
+step2: kl-pair (ao 219453, mo 210), mem 280.89984 MB, ioblock 0.2688 MB
+    CPU time for AO->MO transformation for int2e_sph 2 pass     13.70 sec, wall time      0.47 sec
+    CPU time for AO->MO transformation for int2e_sph    2254.43 sec, wall time     62.94 sec

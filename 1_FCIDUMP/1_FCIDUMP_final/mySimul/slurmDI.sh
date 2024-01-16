@@ -1,8 +1,8 @@
 #!/bin/bash -i
 # 
-#SBATCH --job-name=00005_FCIDUMP
-#SBATCH --output=00005_slurm.out
-#SBATCH --nodelist=node2
+#SBATCH --job-name=00003_dI
+#SBATCH --output=00003_slurmDI.out
+#SBATCH --nodelist=node4
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=36
 #SBATCH --time=24:00:00
@@ -16,4 +16,4 @@ module add pyscf
 module list
 
 export OMP_NUM_THREADS=36
-python 00005_FeSdi_OX_NOSPIN.py > 00005_FeSdi_OX_NOSPIN.out
+python dumpInt.py > 00003_dumpInt.out
