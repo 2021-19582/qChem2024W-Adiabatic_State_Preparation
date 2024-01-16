@@ -17,5 +17,5 @@ from pyscf import gto, scf, dft, ao2mo
 #==================================================================
 from pyscf import tools
 
-tools.molden.from_chkfile('./output/FeSdi_OX_DFT.molden', './output/hs_bp86_MCSCF_FeSdi_OX_20o_30e.chk')
+tools.molden.from_chkfile('./output/FeSdi_RED_DFT.molden', './output/hs_bp86_MCSCF_FeSdi_RED_20o_31e_00004.chk')
 sys.exit()
