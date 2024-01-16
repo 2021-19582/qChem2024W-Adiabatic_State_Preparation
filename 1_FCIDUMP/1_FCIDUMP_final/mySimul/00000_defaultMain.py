@@ -2,14 +2,11 @@
 Generating FCIDUMP for the final Hamiltonian of ASP using pyscf.
 
 Author: Seunghoon Lee, Jan 17, 2022
-Edited: Inyoung  Choi, Jan 11, 2024
+Edited: Inyoung  Choi, Jan 15, 2024
 
-DOI: 10.1038/NCHEM.2041
-12o 14e [Fe2S2(SCH3)4]2- CAS DMRG-CI NOSPIN
-FCIDUMP 00005
-
+FCIDUMP 00000
 """
-
+import sys
 import numpy as np
 from tools_io import dumpERIs
 from pyscf import gto, scf, dft, ao2mo
@@ -19,11 +16,14 @@ from pyscf import gto, scf, dft, ao2mo
 #==================================================================
 # TODO
 #==================================================================
-myorb = 12
-myelec = [7, 7]
+myfilestr = '00000' # TODO
+mymolstr = 'FeSdi_OX' # TODO
+myactOEstr = '12o_14e' # TODO
+myorb = 12 # TODO
+myelec = [7, 7] # TODO
 # Molecule
-myatom = '''
- Fe                 5.22000000    1.05000000   -7.95000000
+myatom = """
+Fe                 5.22000000    1.05000000   -7.95000000
  S                  3.86000000   -0.28000000   -9.06000000
  S                  5.00000000    0.95000000   -5.66000000
  S                  4.77000000    3.18000000   -8.74000000
@@ -47,46 +47,34 @@ myatom = '''
  H                  7.84000000   -1.35000000  -13.34000000
  H                  8.42000000   -0.54000000  -11.90000000
  H                  8.06000000   -2.25000000  -11.86000000
-'''
-mycharge = -2
-myspin = 0
-mysymmetry = False
+""" # TODO
+
+
+mycharge = -2 # TODO
+myspin = 10 # TODO
+mysymmetry = False # TODO
 # SCF
-mychkfile =  './output/00005_hs_bp86_MCSCF_FeSdi_OX_20o_30e_NOSPIN.chk'
+mychkfile =  './output/'+myfilestr+'_hs_bp86_MCSCF_'+mymolstr+'_'+myactOE'.chk' # TODO
 # genMolden
-myMOLDENfile =  '00005_FeSdi_OX_20o_30e_NOSPIN.molden'
+myNEEDMOLDEN = True # TODO
+myMOLDENfile =  ''+myfilestr+'_'+mymolstr+'_DFT.molden' # TODO
 # dumpInt
-myact = []
-act_cp_op = [78, 84]
-act_d = [89, 80, 91, 92, 93, 94, 95, 96, 97, 98]
-myact = act_cp_op + act_d 
-myheader = """ &FCI NORB=36,NELEC=54,MS2=0,   
-  ORBSYM=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-  ISYM=1,
- &END
-"""
-# TODO
-
-myFCIDUMPfile = './output/00005_MCSCF_FeSdi_OX_12o_14e_NOSPIN.FCIDUMP'
-
-
-
-
-
-
-
+myact = [78, 84]+[87, 88, 91, 92, 93, 94, 95, 96, 97, 98] # TODO
+myheader = """ &FCI NORB=12,NELEC=14,MS2=0,   
+   ORBSYM=1,1,1,1,1,1,1,1,1,1,1,1,
+   ISYM=1,
+  &END
+ """ # TODO
+myFCIDUMPfile = './output/'myfilestr+'_MCSCF_'mymolstr+'_'+myactOE+'.FCIDUMP' # TODO
 #==================================================================
 # Molecule
 #==================================================================
 mol = gto.Mole()                # Mole class: Handle params and attrs for GTO
 mol.verbose = 5
-                                # mol.atom: coords of atoms [Fe2S2(SCH3)4]2-
 mol.atom = myatom
-
 mol.basis = 'tzp-dkh'
-mol.charge = mycharge   	# FeS_OX
-mol.spin = myspin		# NOT 2S+1 but S_A - S_B
-				# curr. dealing Fe_A: 5alpha; Fe_B: 5beta
+mol.charge = mycharge
+mol.spin = myspin               # NOT 2S+1 but S_A - S_B
 mol.build()
 mol.symmetry = mysymmetry
 mol.build()
@@ -98,7 +86,7 @@ mf = scf.sfx2c(scf.RKS(mol))    # RKS: (non-rel) restr. Kohn-Sham
                                 # sfx2c: spin-free (the scalar part) 
                                 #       X2C (eXact-2-component) 
                                 #       with 1-electron X-matrix
-mf.chkfile =    mychkfile
+mf.chkfile = mychkfile
 mf.max_cycle = 500
 mf.conv_tol = 1.e-4
 mf.xc = 'b88,p86' 
@@ -107,39 +95,33 @@ mf.scf()			# FAST & ROUGH CONV.
 mf2 = scf.newton(mf)            # scf.RHF returns instance of SCF class
                                 # newton(mf): Co-iterative augmented hessian (CIAH)
                                 #       second order SCF solver
-mf2.chkfile =   mychkfile
+mf2.chkfile = mychkfile
 mf2.conv_tol = 1.e-12
 mf2.kernel()			# SLOW & PRECISE CONV.
-
+#=================================================================
+# Generate molden
+#=================================================================
+if myNEEDMOLDEN :
+    from pyscf import tools
+    tools.molden.from_mo(mol, myMOLDENfile)
+    sys.exit("end of gen molden")
 #==================================================================
 # Dump integrals
 #==================================================================
 mo = mf2.mo_coeff               
 norb = myorb
 nelec = myelec 		        # [ # of alpha e, # of beta e ]
-
-
 from pyscf import mcscf         # MCSCF: Multi-configuration self-consistent field
-
-
 mc = mcscf.CASCI(mf, norb, nelec)
                                 # CASCI: Complete Active Space config. integral
                                 #       wave ftn is L-comb of Slater-det.s
                                 #       expansion coeff solved in variational procedure
                                 #   Note) fixed oribitals!
-                     
 mc.mo_coeff = mo                # [Fe2S2(SCH3)2]2-
-
 act_idx = myact
-			        # p-orbitals of S...
-                                # d-orbitals of Fe
-act_idx = act_cp_op + act_d
 assert len(act_idx) == norb     # norb: # of orbitals
 mo = mc.sort_mo(act_idx)        # pushes empty spaces in list (...)
 mc.mo_coeff = mo
-#from pyscf import tools
-#tools.molden.from_mo(mol, 'fe2s2_actonly.molden', mo[:,86:98])
-
 h1e, ecore = mc.get_h1eff()     # get_h1eff(): CAS space one-electron hamiltonian
                                 # h1e: effective one-electron hamiltonian 
                                 #       defined in CAS space
@@ -149,9 +131,12 @@ g2e = ao2mo.restore(1, g2e, norb)
                                 # g2e: converted the 2e intgrl (in Chemist's notation)
                                 #       between different
                                 #       level of permutation symmetry
+
+
+
+
 header = myheader
 dumpERIs(myFCIDUMPfile, header, int1e=h1e, int2e=g2e, ecore=ecore)       
                                 # ERI: electron repulsion integral
                                 # Final Hamiltonian
                                 
-

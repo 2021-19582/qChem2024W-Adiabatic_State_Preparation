@@ -13,9 +13,13 @@ from pyscf import gto, scf, dft, ao2mo
 # ASP: adiabatic state preparation
 
 #==================================================================
-# MAKE MOLDEN FILE
+# TODO
+#==================================================================
+myMOLDENfile = './output/FeSdi_OX_DFT_NOSPIN_00005.molden'
+mychkfile = './output/hs_bp86_MCSCF_FeSdi_OX_20o_30e_NOSPIN_00005.chk'
+#==================================================================
+# Make .molden file
 #==================================================================
 from pyscf import tools
 
-tools.molden.from_chkfile('./output/FeSdi_OX_DFT_NOSPIN_00005.molden', './output/hs_bp86_MCSCF_FeSdi_OX_20o_30e_NOSPIN_00005.chk')
-sys.exit()
+tools.molden.from_chkfile( myMOLDENfile, mychkfile)
