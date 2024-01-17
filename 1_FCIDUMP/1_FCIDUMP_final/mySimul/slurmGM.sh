@@ -1,7 +1,7 @@
 #!/bin/bash -i
 # 
-#SBATCH --job-name=00006_gM
-#SBATCH --output=00006_slurmGM.out
+#SBATCH --job-name=00008_gM
+#SBATCH --output=00008_slurmGM.out
 #SBATCH --nodelist=node2
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=36
@@ -16,4 +16,4 @@ module add pyscf
 module list
 
 export OMP_NUM_THREADS=36
-python genMolden.py > 00006_genMolden.out
+python genMolden.py > 00008_genMolden.out
