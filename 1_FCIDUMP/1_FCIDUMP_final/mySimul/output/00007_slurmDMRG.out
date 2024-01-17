@@ -23,4 +23,10 @@ bash: no job control in this shell
 :: vtune -- latest
 :: oneAPI environment initialized ::
  
+------------------------ /usr/share/modules/modulefiles ------------------------
+dot  module-git  module-info  modules  null  use.own  
+ERROR: Unable to locate a modulefile for 'jmol-16.1.47'
+------------------------ /usr/share/modules/modulefiles ------------------------
+dot  module-git  module-info  modules  null  use.own  
+ERROR: Unable to locate a modulefile for 'jmol-16.1.47'
 /home/amychoi7/programs/anaconda/envs/pyscf

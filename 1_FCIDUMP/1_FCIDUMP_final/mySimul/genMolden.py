@@ -15,8 +15,8 @@ from pyscf import gto, scf, dft, ao2mo
 #==================================================================
 # TODO
 #==================================================================
-myMOLDENfile = './output/FeSdi_OX_DFT_NOSPIN_00005.molden'
-mychkfile = './output/hs_bp86_MCSCF_FeSdi_OX_20o_30e_NOSPIN_00005.chk'
+myMOLDENfile = './output/00006_FeScu_S6o_54e_DFT.molden'
+mychkfile = './output/00006_hs_bp86_MCSCF_FeScu_36o_54e.chk'
 #==================================================================
 # Make .molden file
 #==================================================================

@@ -8,7 +8,7 @@
 #SBATCH --time=24:00:00
 
 source ~/.bashrc
-conda activate 2023_PySCF
+conda activate pyscf
 echo $CONDA_PREFIX
 
 export OMP_NUM_THREADS=36

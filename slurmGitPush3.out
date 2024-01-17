@@ -23,3 +23,8 @@ bash: no job control in this shell
 :: vtune -- latest
 :: oneAPI environment initialized ::
  
+[main b9023cb] update node3
+ 5 files changed, 67639 insertions(+)
+ create mode 100644 slurmGitPush3.out
+To github.com:2021-19582/qChem2024W-Adiabatic_State_Preparation.git
+   d8829a3..b9023cb  main -> main
