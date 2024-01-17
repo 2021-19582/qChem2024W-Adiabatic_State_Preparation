@@ -1,15 +1,15 @@
 #!/bin/bash -i
 # 
-#SBATCH --job-name=00008_b2
-#SBATCH --output=00008_slurmDMRG.out
+#SBATCH --job-name=00007_b2
+#SBATCH --output=00007_slurmDMRG.out
 #SBATCH --nodelist=node4
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=36
 #SBATCH --time=24:00:00
 
 source ~/.bashrc
-conda activate pyscf
+conda activate 2023_PySCF
 echo $CONDA_PREFIX
 
 export OMP_NUM_THREADS=36
-block2main DMRG.conf > 00008_DMRG.out
+block2main DMRG.conf > 00007_DMRG.out

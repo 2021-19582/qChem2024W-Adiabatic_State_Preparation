@@ -112,9 +112,11 @@ mf2.kernel()			# SLOW & PRECISE CONV.
 #=================================================================
 # Generate molden
 #=================================================================
+mo = mf2.mo_coeff
+
 if myNEEDMOLDEN :
     from pyscf import tools
-    tools.molden.from_mo(mol, myMOLDENfile)
+    tools.molden.from_mo(mol, myMOLDENfile, mo)
     sys.exit("end of gen molden")
 #==================================================================
 # Dump integrals
