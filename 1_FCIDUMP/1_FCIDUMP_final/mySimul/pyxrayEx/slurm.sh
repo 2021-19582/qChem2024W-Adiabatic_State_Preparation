@@ -13,5 +13,3 @@ echo $CONDA_PREFIX
 
 export OMP_NUM_THREADS=36
 python 06_FeSdi_xas.py > 06_FeSdi_xas.out
-python 0
-
