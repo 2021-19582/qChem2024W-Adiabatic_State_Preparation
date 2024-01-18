@@ -22,7 +22,7 @@ import numpy as np
 
 class ActiveSpaceModel():
     def __init__(self, model):
-        model_list = ['FeSdi_OX_12o14e_lunoloc', 'FeSdi_OX_20o30e_lunoloc']
+        model_list = ['FeSdi_OX_12o14e_lunoloc', 'FeSdi_OX_20o30e_lunoloc', 'FeSdi_OX_20!o30e_lunoloc']
         assert model in model_list
         self.model = model
 
@@ -139,6 +139,18 @@ class ActiveSpaceModel():
                     act_3d = act1
                     self.n_core = len(act0)
                     self.n_active = len(act1)
+
+                elif '20!o30e' in model:
+                    act0 = [79, 80, 81, 82, 83, 84, 85, 86, 87, 88]  # s 3p
+                    act1 = [89, 90, 91, 92, 93, 94, 95, 96, 97, 98] # fe 3d
+                    idx = act0+act1
+                    na = 7
+                    nb = 7
+                    act_3p = act0
+                    act_3d = act1
+                    self.n_core = len(act0)
+                    self.n_active = len(act1)
+
                 else:
                     assert False
             else:
