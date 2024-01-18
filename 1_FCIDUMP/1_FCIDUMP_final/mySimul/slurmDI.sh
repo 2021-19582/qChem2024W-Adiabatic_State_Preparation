@@ -11,9 +11,5 @@ source ~/.bashrc
 conda activate pyscf
 echo $CONDA_PREFIX
 
-module purge
-module add pyscf
-module list
-
 export OMP_NUM_THREADS=36
 python dumpInt.py > 00003_dumpInt.out
