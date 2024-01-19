@@ -29,3 +29,13 @@ ERROR: Unable to locate a modulefile for 'jmol-16.1.47'
 ------------------------ /usr/share/modules/modulefiles ------------------------
 dot  module-git  module-info  modules  null  use.own  
 ERROR: Unable to locate a modulefile for 'jmol-16.1.47'
+[main 0be728e] update node5
+ 12 files changed, 927026 insertions(+), 873234 deletions(-)
+ create mode 100644 1_FCIDUMP/1_FCIDUMP_final/mySimul/pyxrayEx/05_FeSdi_xas.out
+ create mode 100644 1_FCIDUMP/1_FCIDUMP_final/mySimul/pyxrayEx/05_FeSdi_xas.py
+ create mode 100644 1_FCIDUMP/1_FCIDUMP_final/mySimul/pyxrayEx/05_slurmXAS.out
+ create mode 100644 1_FCIDUMP/1_FCIDUMP_final/mySimul/pyxrayEx/FeSdi_OX_20!o30e_lunoloc.h5
+ create mode 100644 1_FCIDUMP/1_FCIDUMP_final/mySimul/pyxrayEx/FeSdi_OX_20!o30e_lunoloc.molden
+ create mode 100644 1_FCIDUMP/1_FCIDUMP_final/mySimul/pyxrayEx/FeSdi_OX_20!o30e_lunoloc_uks.h5
+To github.com:2021-19582/qChem2024W-Adiabatic_State_Preparation.git
+   c3caadd..0be728e  main -> main
