@@ -12,4 +12,5 @@ conda activate pyscf
 echo $CONDA_PREFIX
 
 export OMP_NUM_THREADS=36
-python 00009_FeSdi_OX_20o_30e.py > 00009_FeSdi_OX_20o_30e.out
+python 00009_FeSdi_OX_20o_30e > 00009_FeSdi_OX_20o_30e.out
+
